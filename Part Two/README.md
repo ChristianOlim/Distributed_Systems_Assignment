@@ -1,9 +1,10 @@
-#SwaggerHub Link:
+# SwaggerHub Link:
 https://app.swaggerhub.com/apis/ChristianOlim/UserApi/1#/users
 
-#Part 2: RESTful User Account Service
+# Part 2: RESTful User Account Service
 
 **You are required to:**
+
 • Design a REST API for a User Account web service using OpenAPI and SwaggerHub.
   Your API definition should support the operations outlined below, following 1
   the REST architectural style and best practices.
@@ -12,7 +13,7 @@ https://app.swaggerhub.com/apis/ChristianOlim/UserApi/1#/users
   utility methods provided by the gRPC Password Service you developed in Part 1.
   
   
-##Integrating with gRPC Password Service
+## Integrating with gRPC Password Service
 
 Your User Account service should make use of the gRPC Password Service you developed
 in Part 1 for password hashing and validation, i.e.:
@@ -32,14 +33,14 @@ decisions you made in developing your gRPC Password Service (e.g. around error h
 you’ll have to work with now.
 
 
-##Persistence
+## Persistence
 A real implementation would persist user data to a database. In this project our focus is
 more on interprocess communication, so instead of using a database users can be stored
 in-memory in a map, using userId as the key, i.e. HashMap<int, User> where int is the
 userId.
 
 
-##Considerations
+## Considerations
 • Your User Account service should be able to accept requests and return responses
   in both JSON and XML format
 
