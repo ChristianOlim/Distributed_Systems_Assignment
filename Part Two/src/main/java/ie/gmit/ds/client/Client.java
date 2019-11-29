@@ -1,17 +1,14 @@
 package ie.gmit.ds.client;
 
-import com.google.protobuf.BoolValue;
-import com.google.protobuf.ByteString;
 import ie.gmit.ds.*;
 import ie.gmit.ds.api.User;
 import ie.gmit.ds.database.Database;
+import com.google.protobuf.ByteString;
 import io.grpc.stub.StreamObserver;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
-import io.grpc.Status;
 
-import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -43,7 +40,7 @@ public class Client {
     }
 
     // Validate Password is added synchronously by calling the blocking stub
-    public void Validate(String password, ByteString hashedPassword, ByteString salt) {
+    public boolean Validate(String password, ByteString hashedPassword, ByteString salt) {
         boolean isTrue;
         Password.ValidatePassRequest validateRequest = Password.ValidatePassRequest.newBuilder()
                 .setPassword(password)

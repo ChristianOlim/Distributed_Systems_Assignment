@@ -3,6 +3,7 @@ package ie.gmit.ds.api;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.xml.bind.annotation.*;
 import javax.validation.constraints.NotNull;
+import com.google.protobuf.ByteString;
 
 @XmlRootElement(name= "User")
 public class User {
@@ -15,6 +16,8 @@ public class User {
     private String email;
     @NotNull
     private String password;
+    private ByteString hashedPassword;
+    private ByteString salt;
 
 
     public User() {
@@ -22,11 +25,20 @@ public class User {
         super();
     }
 
+    // Constructor
     public User(int userId, String userName, String email, String password) {
         this.userId = userId;
         this.userName = userName;
         this.email = email;
         this.password = password;
+    }
+
+    public User(int userId, String userName, String email, ByteString hashedPassword, ByteString salt){
+        this.userId = userId;
+        this.userName = userName;
+        this.email = email;
+        this.hashedPassword = hashedPassword;
+        this.salt = salt;
     }
 
     // Getters
@@ -54,20 +66,17 @@ public class User {
         return userId;
     }
 
-    // Setters
-    public void setUserName(String userName) {
-        this.userName = userName;
+    @JsonProperty
+    public ByteString getHashedPassword() {
+        return hashedPassword;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    @JsonProperty
+    public ByteString getSalt() {
+        return salt;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public String toString(){
+        return "User{" + "User ID : " + userId + ", User Name : '" + userName + '\'' + ", Email : '" + email + '\'' + ", password : '" + password + '\'' + ", Hashed Password : " + hashedPassword + ", Salt : " + salt + '}';
     }
 }
